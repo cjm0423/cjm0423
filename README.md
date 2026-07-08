@@ -1,11 +1,12 @@
 # 차지만 (Cha Jiman)
 
-클라우드 인프라 위에서 **데이터와 AI 시스템이 안정적으로 동작하는 구조**에 관심이 많은 DevOPS·인프라 지향 개발자입니다.
-"잘 만든 시스템"보다 "왜 느린지 설명할 수 있는 시스템"을 만드는 데 시간을 씁니다.
+클라우드 인프라 위에서 **데이터와 AI 시스템이 안정적으로 동작하는 구조**에 관심이 많은 클라우드, DevOps, 인프라 지향 개발자입니다.
+"잘 만든 시스템"보다 **"왜 느린지 설명할 수 있는 시스템"**을 만드는 데 시간을 씁니다.
 
 - 🎓 삼육대학교 컴퓨터공학부 4학년
 - 📄 KSCI 학술지 게재 — *대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화* (2026)
-- 🔧 관심 분야: Infra / DevOps · OpenStack · 데이터 파이프라인 · Cloud
+- 🔧 관심 분야: Infra / DevOps · Cloud · Kubernetes · OpenStack · 데이터 파이프라인
+- 📫 cjm042352@gmail.com
 
 ---
 
@@ -14,41 +15,197 @@
 > 프로젝트 코드는 팀·조직 저장소에 있습니다. 각 제목에서 원본으로 이동할 수 있습니다.
 
 ### 1. 실시간 데이터 파이프라인 — End-to-End ([↗ 저장소](https://github.com/kakaocloud-edu/tutorial/tree/main/DataAnalyzeCourse))
+
+`2025.01 ~ 2025.08`
+
 **KakaoCloud 공식 교육 콘텐츠**(★25)에 포함된 실시간 데이터 파이프라인 실습 코스를 설계·구현.
+
 - **수집 → CDC 처리 → ML 학습·서빙**까지 전 구간 아키텍처 설계
+- FSM 기반 E-commerce 트래픽 제너레이터 직접 설계 — 시간대·요일·플래시세일 가중치, 참여도별 전환율 차등, 최대 1,500명 동적 사용자 풀 관리
+- Nginx 커스텀 로그(18개 필드) → Filebeat → Logstash → Kafka(Avro/Schema Registry) 수집 파이프라인
 - Kafka·Kafka Connect·Debezium(CDC)로 이종 소스를 단일 스트림으로 통합
-- PySpark(Structured Streaming)+Delta Lake로 스트리밍·배치 통합 처리
+- PySpark(Structured Streaming) + Delta Lake로 스트리밍·배치 통합 처리
+- Hive External Table → Aggregated Table → Data Mart 3계층 데이터 모델 설계
 - Kubeflow 파이프라인 학습 → KServe 서빙까지 자동화
 - `KakaoCloud` `Kafka` `Spark` `Hadoop` `Kubeflow` `KServe` `Python` `Go`
 
-### 2. 정부 정책 개인화 추천 AI 챗봇 (캡스톤·팀장) ([↗ 저장소](https://github.com/26-1capstone-design2))
-LangChain·RAG 기반으로 사용자 질의에 맞는 정책 문서를 검색해 LLM이 답변을 생성하는 서비스.
-- 정책 데이터 수집(scrapper) → AI 서비스(aiservice) → 백엔드(Java)·프론트(TS)로 이어지는 풀스택 구성
-- 검색 정확도와 응답 품질을 함께 끌어올리는 것이 핵심 과제
-- `LangChain` `RAG` `Python` `Java` `TypeScript`
+<details>
+<summary>🔧 주요 트러블슈팅</summary>
 
-### 3. ONE WAVE — 취업 준비 청년을 위한 면접 회고·정서 지원 웹 (2026 GDGoC 해커톤) ([↗ 저장소](https://github.com/2026-GDGoC-Hackathon-ONE-WAVE))
-취업난 속 청년들에게 **면접 회고**를 제공하고 결과에 따른 **감정 위로**를 건네는 웹 서비스. **백엔드 담당.**
+- **Logstash Ruby 필터 타입 충돌** — `date` 필터가 이미 `LogStash::Timestamp`로 변환한 필드를 Ruby 스크립트가 `to_s`로 문자열화하며 발생. timestamp 필드를 예외 처리해 해결
+- **Avro 스키마 불일치** — Schema Registry 오등록으로 역직렬화 실패. `스키마 삭제 → Consumer Group 오프셋 초기화 → 토픽 재생성` 3단계 복구 절차 정립 및 문서화
+
+</details>
+
+---
+
+### 2. VMLease — 멀티클라우드 VM 자동화 Kubernetes Operator
+
+`2026.05`
+
+Kubernetes **Operator 패턴(CRD + Controller)**을 직접 구현. CR 하나를 생성하면 KakaoCloud·AWS·GCP 중 원하는 클라우드에 VM이 자동 생성되고, 만료 시각이 지나면 자동 삭제됩니다.
+
+- Kubebuilder로 `VMLease` CRD(Spec/Status) 스키마 설계, Controller 상태 머신 + **Finalizer**로 삭제 시 실제 VM 정리 보장
+- **Provider Interface 패턴**으로 CSP별 구현체를 분리 — 신규 클라우드는 인터페이스 구현만으로 확장, 컨트롤러 코드 수정 불필요
+- 컨트롤 플레인(K8s)과 워크로드(VM)를 분리 설계해 kind·k3s·EKS·GKE 어디서든 동일 동작
+- CSP별 인증 정보는 Kubernetes Secret으로 분리 관리
+- kind(Kubernetes in Docker)로 **클라우드 검증 비용 0원** 개발 환경 구성
+- `Go` `Kubebuilder` `Kubernetes` `CRD/Controller` `KakaoCloud` `AWS` `GCP`
+
+```
+[K8s 클러스터 = 컨트롤 플레인]
+  VMLease Controller
+        ├── KakaoCloud API ──▶ [KakaoCloud VM]
+        ├── AWS EC2 API    ──▶ [AWS VM]
+        └── GCP Compute API ─▶ [GCP VM]
+```
+
+---
+
+### 3. 정부 정책 개인화 추천 AI 챗봇 (캡스톤·**팀장**) ([↗ 저장소](https://github.com/26-1capstone-design2))
+
+`4학년 1학기` · 삼육대 SW중심대학사업단 × 알라딘에이아이 산학협력
+
+LangChain·RAG 기반으로 사용자 질의에 맞는 정책 문서를 검색해 LLM이 답변을 생성하는 서비스.
+
+- 정책 데이터 수집(scrapper) → AI 서비스(aiservice) → 백엔드·프론트로 이어지는 풀스택 구성
+- **ChromaDB** 벡터 검색 + LangChain 임베딩, `policy_{id}` 형식으로 RDBMS 레코드와 매핑
+- `POST /internal/ai/chat` — 프로필(연령·지역·관심분야) 메타데이터 필터링 → 유사 정책 검색 → LLM 프롬프트 주입 → **답변 + 근거 정책 카드** 반환
+- Docker Compose로 FE(Next.js)·BE(NestJS)·AI(FastAPI) 3-tier 통합, 원커맨드 배포 + DB 마이그레이션 자동화
+- 청년구직자 / 소상공인 / 지자체 담당자 3개 페르소나 기반 기능 설계
+- `LangChain` `RAG` `ChromaDB` `FastAPI` `NestJS` `Next.js` `PostgreSQL+pgvector` `Docker`
+
+---
+
+### 4. ONE WAVE — 취업 준비 청년을 위한 면접 회고·정서 지원 웹 ([↗ 저장소](https://github.com/2026-GDGoC-Hackathon-ONE-WAVE))
+
+`2026.02` · 2026 GDGoC 해커톤 · **백엔드 담당**
+
+취업난 속 청년들에게 **면접 회고**를 제공하고 결과에 따른 **감정 위로**를 건네는 웹 서비스.
+
 - Spring Boot(Java 17) 기반 REST API 설계, JPA·MySQL로 데이터 관리
-- Google Gemini(Vertex AI)를 연동해 회고·정서 지원 응답을 생성
+- Google Gemini(Vertex AI)를 연동해 회고·정서 지원 응답 생성
 - Swagger로 API 문서화, Docker·GitHub Actions로 빌드·배포 자동화
+- **설계 원칙**: 평가 금지 / 현상 관찰 / 행동 연결 / 멘탈 케어 — 사용자에게 '부족함'이라는 낙인을 찍지 않는다
 - `Spring Boot` `Java` `JPA` `MySQL` `Vertex AI` `Docker` `GitHub Actions`
+
+---
+
+### 5. SU Cloud — 학교 자체 OpenStack 프라이빗 클라우드
+
+`2026.06 ~ 2026.12`
+
+학교 유휴 서버(20코어 CPU × 2대)를 활용해 학생들이 온디맨드로 사용하는 자체 프라이빗 클라우드 구축.
+
+- **Phase 1** — OpenStack 코어 컴포넌트 설치 및 외부 접근 경로 확보
+- **Phase 2** — 셀프서비스 대시보드: 신청 → 인증 → VM 자동 프로비저닝
+- 학교 망을 경유하는 트래픽 처리를 위한 네트워크 설계
+- `OpenStack` `Network Design` `On-premise`
+
+---
+
+### 6. 캡스톤 매니저 — 프로젝트 협업 플랫폼 ([↗ 저장소](https://github.com/mk8048/Sanhak_CapstoneDesign))
+
+`3학년 2학기` · **DB 설계 · API 연동 담당**
+
+캡스톤 진행 시 산출물 관리·기여도 측정·포트폴리오 제작의 비효율을 해결하는 올인원 협업 플랫폼.
+
+- ERD 및 관계형 스키마 설계 (users / projects / project_members / notes)
+- **GitHub API 연동** — Fine-grained PAT 최소 권한 정립, 커밋·PR 기반 기여도 자동 분석
+- 칸반 보드, 작업 의존성 처리, 단계별 진행률, 원클릭 포트폴리오 생성
+- 비기능 요구사항 정의: 대시보드 2초 이내(800개 작업 기준), 동시 100팀/1,000명, 가용성 월 99%
+- `Spring` `Java` `MySQL` `GitHub API`
+
+---
+
+### 7. 청년정책·적금 혜택 추천 앱 ([↗ 저장소](https://github.com/cjm0423/2025SW))
+
+`2025 2학기` · SW 공모전 · **프론트엔드 · AI 추천 로직 담당**
+
+*"혜택을 찾아 나를 거르는" 방식을 → "내 정보를 넣으면 맞는 혜택만 보이는" 방식으로 역전*
+
+- 정부24·복지로 Open API + 시도청 스크래핑, Airflow 주 1회 자동 갱신
+- Rule-based 필터(지역·연령) + 가중치 점수화(마감 임박 +5점, 정밀 일치 +10점)
+- 마감 D-7 / D-1 알림, 적금 만기 예상액 계산기, 카카오 로그인 연동
+- → 이 아이디어가 **캡스톤2의 RAG 기반 정책 추천**으로 고도화
+- `Kotlin` `Android` `Kakao Login`
+
+---
+
+## 🔬 리서치 · 인프라 운영
+
+### K8s 기반 VM+컨테이너 통합 제어 솔루션 리서치 — 창업동아리 CLOUDLAB
+
+- **KubeVirt**(무거운 구조, 클러스터 리소스 과소모), **Crossplane**(퍼블릭 클라우드 래퍼라 온프렘 세밀 제어 한계), **Firecracker**(경량 microVM) 비교분석
+- "핵심 라이프사이클에만 집중하는 초경량 **Thin-Controller**" 차별화 방향 도출
+- → 이 리서치가 **VMLease 오퍼레이터 실제 구현**으로 연결
+
+### SW중심대학 가상머신 운영 프로세스 설계
+
+- 교내 VM 자원의 **신청 → 승인 → 운영 → 반납** 전 주기 프로세스 정립
+- 우선순위 기준(수업·연구 목적 우선), 자원 정책(2 vCPU / 4GiB / SSD 30GB), 보안 접근제어, 자원 회수 정책 설계
+- → 이 경험이 VMLease의 **만료 기반 자동 삭제(Finalizer)** 설계로 이어짐
 
 ---
 
 ## 📄 연구
 
 **대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화** — KSCI, 2026.05
-파이프라인의 어떤 설정이 전체 지연시간에 영향을 주는지 정량 측정·분석.
 [DOI: 10.9708/jksci.2026.31.05.011](https://doi.org/10.9708/jksci.2026.31.05.011)
+
+파이프라인의 어떤 설정이 전체 지연시간에 영향을 주는지 정량 측정·분석.
+
+- VM 3대에서 트래픽을 병렬 생성해 클라이언트 병목을 차단하고, ALB를 경유해 분산 인가
+- 파이프라인 **7단계 구간별 ms 단위 지연시간 추적 시스템** 직접 설계
+- Baseline 포함 **6개 튜닝 시나리오** 설계·실험
+
+**핵심 발견**
+
+| 시나리오 | 결과 |
+| :--- | :--- |
+| Baseline | CPU 64%로 여유가 있는데도 E2E 1.8~2.0초 → 리소스가 아닌 **정책**이 병목 |
+| Zero-Wait | 패킷 9,266 pck/s 폭증 → 처리량 **초당 188건까지 강제 제한** |
+| 마이크로배치 | 처리량 초당 935건까지 급증하나 큐 백로그로 **지연 80~100초 붕괴** |
+| **하이브리드** | 앞단 I/O 통제 + 뒷단 무대기 배출 → **CPU 68% 안정 + E2E 지연 0.5초 미만** |
+
+> 앞단 최적화가 뒷단 처리 용량을 넘어서면 병목은 사라지지 않고 **전이**된다.
+> 튜닝은 국소 최적화가 아니라 전체 데이터 흐름을 봐야 한다.
+
+---
+
+## 🌱 Activity
+
+| 활동 | 기간 | 내용 |
+| :--- | :--- | :--- |
+| **창업동아리 CLOUDLAB 리더** | 2025.07 ~ | 클라우드/인프라/DevOps 커리큘럼 기획 · 4기 → 2025-2 정규 → 5기 모집·운영 총괄 · 신입 부원 면접 및 선발 |
+| **학부연구생 후임 멘토링** | | Essential Course 개선 · 주간 발표 피드백 · Kubeflow Katib CrashLoopBackOff 트러블슈팅 지도 |
+| **전남ICT이노베이션스퀘어 교육** | | KakaoCloud VM/VPC · 스냅샷/복원 · NGINX/Apache 배포 · 방화벽 및 포트 트러블슈팅 |
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Infra / DevOps** · `OpenStack` `Docker` `Linux` `Kubernetes` `Nginx` `Bash`
+- **Infra / DevOps** · `Kubernetes` `Kubebuilder` `OpenStack` `Docker` `Linux` `Nginx` `Bash`
 - **Cloud** · `KakaoCloud` `AWS` `GCP`
-- **Data Engineering** · `Kafka` `Kafka Connect` `Debezium` `Spark` `Hadoop` `Hive` `Logstash`
-- **ML / Serving** · `Kubeflow` `KServe` `LangChain` `RAG`
-- **Backend** · `Spring Boot` `JPA` `MySQL`
-- **Language** · `Python` `Go` `Java`
+- **Data Engineering** · `Kafka` `Kafka Connect` `Debezium` `Spark` `Delta Lake` `Hadoop` `Hive` `Logstash` `Filebeat`
+- **ML / Serving** · `Kubeflow` `KServe` `LangChain` `RAG` `ChromaDB`
+- **Backend** · `Spring Boot` `JPA` `NestJS` `FastAPI` `MySQL` `PostgreSQL`
+- **Language** · `Python` `Go` `Java` `TypeScript` `Kotlin`
+
+---
+
+## 🔗 프로젝트는 서로 이어져 있습니다
+
+```
+📋 VM 운영 프로세스 설계 ─────┐
+   (자원 회수 정책)           │
+                             ├──▶ 🔧 VMLease Operator
+🔬 K8s 통합 제어 리서치 ──────┘      (만료 기반 자동 삭제)
+   (Thin-Controller 방향)
+
+🌊 데이터 파이프라인 구축 ────▶ 📄 KSCI 논문
+   (컴포넌트 실전 경험)          (6개 시나리오 정량 분석)
+
+💰 정책 추천 앱 (Rule-based) ─▶ 🏛 정책 추천 챗봇 (RAG)
+   (SW 공모전)                   (산학협력 캡스톤 · 팀장)
+```
