@@ -41,7 +41,7 @@
 
 ### 2. VMLease — 멀티클라우드 VM 자동화 Kubernetes Operator
 
-`2026.05`
+`2026.05~`
 
 Kubernetes **Operator 패턴(CRD + Controller)**을 직접 구현. CR 하나를 생성하면 KakaoCloud·AWS·GCP 중 원하는 클라우드에 VM이 자동 생성되고, 만료 시각이 지나면 자동 삭제됩니다.
 
@@ -64,12 +64,12 @@ Kubernetes **Operator 패턴(CRD + Controller)**을 직접 구현. CR 하나를 
 
 ### 3. 정부 정책 개인화 추천 AI 챗봇 (캡스톤·**팀장**) ([↗ 저장소](https://github.com/26-1capstone-design2))
 
-`4학년 1학기` · 삼육대 SW중심대학사업단 × 알라딘에이아이 산학협력
+`2026.03 ~ 2026.06` · 삼육대 SW중심대학사업단 × 알라딘에이아이 산학협력
 
 LangChain·RAG 기반으로 사용자 질의에 맞는 정책 문서를 검색해 LLM이 답변을 생성하는 서비스.
 
 - 정책 데이터 수집(scrapper) → AI 서비스(aiservice) → 백엔드·프론트로 이어지는 풀스택 구성
-- **ChromaDB** 벡터 검색 + LangChain 임베딩, `policy_{id}` 형식으로 RDBMS 레코드와 매핑
+- **PostgreSQL + vectorDB** 벡터 검색 + LangChain 임베딩, `policy_{id}` 형식으로 RDBMS 레코드와 매핑
 - `POST /internal/ai/chat` — 프로필(연령·지역·관심분야) 메타데이터 필터링 → 유사 정책 검색 → LLM 프롬프트 주입 → **답변 + 근거 정책 카드** 반환
 - Docker Compose로 FE(Next.js)·BE(NestJS)·AI(FastAPI) 3-tier 통합, 원커맨드 배포 + DB 마이그레이션 자동화
 - 청년구직자 / 소상공인 / 지자체 담당자 3개 페르소나 기반 기능 설계
