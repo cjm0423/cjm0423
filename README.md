@@ -45,11 +45,11 @@
 
 Kubernetes **Operator 패턴(CRD + Controller)**을 직접 구현. CR 하나를 생성하면 KakaoCloud·AWS·GCP 중 원하는 클라우드에 VM이 자동 생성되고, 만료 시각이 지나면 자동 삭제됩니다.
 
-- Kubebuilder로 `VMLease` CRD(Spec/Status) 스키마 설계, Controller 상태 머신 + **Finalizer**로 삭제 시 실제 VM 정리 보장
-- **Provider Interface 패턴**으로 CSP별 구현체를 분리 — 신규 클라우드는 인터페이스 구현만으로 확장, 컨트롤러 코드 수정 불필요
+- Kubebuilder로 `VMLease` CRD(Spec/Status) 스키마 설계, Controller 상태 머신 + Finalizer로 삭제 시 실제 VM 정리 보장
+- Provider Interface 패턴으로 CSP별 구현체를 분리 — 신규 클라우드는 인터페이스 구현만으로 확장, 컨트롤러 코드 수정 불필요
 - 컨트롤 플레인(K8s)과 워크로드(VM)를 분리 설계해 kind·k3s·EKS·GKE 어디서든 동일 동작
 - CSP별 인증 정보는 Kubernetes Secret으로 분리 관리
-- kind(Kubernetes in Docker)로 **클라우드 검증 비용 0원** 개발 환경 구성
+- kind(Kubernetes in Docker)로 개발 환경 구성
 - `Go` `Kubebuilder` `Kubernetes` `CRD/Controller` `KakaoCloud` `AWS` `GCP`
 
 ```
