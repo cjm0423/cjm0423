@@ -21,7 +21,7 @@
 **KakaoCloud 공식 교육 콘텐츠**(★25)에 포함된 실시간 데이터 파이프라인 실습 코스를 설계·구현.
 
 - **수집 → CDC 처리 → ML 학습·서빙**까지 전 구간 아키텍처 설계
-- FSM 기반 E-commerce 트래픽 제너레이터 직접 설계 — 시간대·요일·플래시세일 가중치, 참여도별 전환율 차등, 최대 1,500명 동적 사용자 풀 관리
+- FSM 기반 E-commerce 트래픽 제너레이터 설계
 - Nginx 커스텀 로그(18개 필드) → Filebeat → Logstash → Kafka(Avro/Schema Registry) 수집 파이프라인
 - Kafka·Kafka Connect·Debezium(CDC)로 이종 소스를 단일 스트림으로 통합
 - PySpark(Structured Streaming) + Delta Lake로 스트리밍·배치 통합 처리
