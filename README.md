@@ -156,7 +156,7 @@ Kubernetes **Operator 패턴(CRD + Controller)**을 직접 구현. CR 하나를 
 | :--- | :--- | :--- |
 | **교내동아리 CLOUDLAB 리더** | 2025.07 ~ | 클라우드/인프라/DevOps 커리큘럼 기획 · 3기 → 2025-여름방학 / 2025-2 정규 / 2026-1 정규 → 4기 모집·운영 총괄 · 신입 부원 면접 및 선발 |
 | **학부연구생 후임 멘토링** | 2026.06 ~ | Essential Course 개선 · 주간 발표 피드백 · Kubeflow Katib CrashLoopBackOff 트러블슈팅 지도 |
-| **전남ICT이노베이션스퀘어 교육** | 2026.10 | KakaoCloud VM/VPC · 스냅샷/복원 · NGINX/Apache 배포 · 방화벽 및 포트 트러블슈팅에 대한 클라우드 기초 교육 자료 파이프라인 기획 및 제작 |
+| **전남ICT이노베이션스퀘어 교육 자료 제작** | 2025.10 | KakaoCloud VM/VPC · 스냅샷/복원 · NGINX/Apache 배포 · 방화벽 및 포트 트러블슈팅에 대한 클라우드 기초 교육 자료 파이프라인 기획 및 제작 |
 
 ---
 
