@@ -29,14 +29,6 @@
 - Kubeflow 파이프라인 학습 → KServe 서빙까지 자동화
 - `KakaoCloud` `Kafka` `Spark` `Hadoop` `Kubeflow` `KServe` `Python` `Go`
 
-<details>
-<summary>🔧 주요 트러블슈팅</summary>
-
-- **Logstash Ruby 필터 타입 충돌** — `date` 필터가 이미 `LogStash::Timestamp`로 변환한 필드를 Ruby 스크립트가 `to_s`로 문자열화하며 발생. timestamp 필드를 예외 처리해 해결
-- **Avro 스키마 불일치** — Schema Registry 오등록으로 역직렬화 실패. `스키마 삭제 → Consumer Group 오프셋 초기화 → 토픽 재생성` 3단계 복구 절차 정립 및 문서화
-
-</details>
-
 ---
 
 ### 📄 연구
