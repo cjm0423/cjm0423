@@ -2,9 +2,9 @@
 
 ### Hi there 👋
 
-<a href="mailto:cjm042352@gmail.com"><img src="https://badgen.net/badge/Gmail/cjm042352@gmail.com/red"/></a>
+<a href="mailto:cjm042352@gmail.com"><img src="https://badgen.net/badge/Mail/cjm042352@gmail.com/red"/></a>
 <a href="https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74" target="_blank"><img src="https://badgen.net/badge/Portfolio/Notion/black"></a>
-<a href="./PORTFOLIO.md" target="_blank"><img src="https://badgen.net/badge/Detailed%20Portfolio/GitHub/purple"></a>
+<a href="./PORTFOLIO.md" target="_blank"><img src="https://badgen.net/badge/Portfolio/GitHub%20(Detailed)/purple"></a>
 
 </div>
 
@@ -20,25 +20,25 @@
 
 <div align=center> 
 
-![KakaoCloud](https://badgen.net/badge/KakaoCloud/FFCD00)
-![AWS](https://badgen.net/badge/AWS/232F3E)
-![GCP](https://badgen.net/badge/GCP/4285F4)
-![OpenStack](https://badgen.net/badge/OpenStack/ED1944)
+![KakaoCloud](https://badgen.net/badge/Cloud/KakaoCloud/yellow)
+![AWS](https://badgen.net/badge/Cloud/AWS/orange)
+![GCP](https://badgen.net/badge/Cloud/GCP/blue)
+![OpenStack](https://badgen.net/badge/Cloud/OpenStack/red)
 
-![Kubernetes](https://badgen.net/badge/Kubernetes/326CE5)
-![Docker](https://badgen.net/badge/Docker/2496ED)
-![Linux](https://badgen.net/badge/Linux/FCC624)
-![Nginx](https://badgen.net/badge/Nginx/009639)
+![Kubernetes](https://badgen.net/badge/Infra/Kubernetes/blue)
+![Docker](https://badgen.net/badge/Infra/Docker/blue)
+![Linux](https://badgen.net/badge/Infra/Linux/yellow)
+![Nginx](https://badgen.net/badge/Infra/Nginx/green)
 
-![Kafka](https://badgen.net/badge/Kafka/231F20)
-![Spark](https://badgen.net/badge/Spark/E25A1C)
-![Hadoop](https://badgen.net/badge/Hadoop/66CCFF)
-![Kubeflow](https://badgen.net/badge/Kubeflow/326CE5)
+![Kafka](https://badgen.net/badge/Data/Kafka/black)
+![Spark](https://badgen.net/badge/Data/Spark/orange)
+![Hadoop](https://badgen.net/badge/Data/Hadoop/cyan)
+![Kubeflow](https://badgen.net/badge/Data/Kubeflow/blue)
 
-![Go](https://badgen.net/badge/Go/00ADD8)
-![Python](https://badgen.net/badge/Python/3776AB)
-![Java](https://badgen.net/badge/Java/007396)
-![SpringBoot](https://badgen.net/badge/Spring%20Boot/6DB33F)
+![Go](https://badgen.net/badge/Lang/Go/cyan)
+![Python](https://badgen.net/badge/Lang/Python/blue)
+![Java](https://badgen.net/badge/Lang/Java/orange)
+![SpringBoot](https://badgen.net/badge/Lang/Spring%20Boot/green)
 
 </div>
 
@@ -63,12 +63,11 @@
 
 <br/>
 
-
 ### 📄 Publication
 
 | Title | Venue | When |
 | --- | --- | --- |
-| 대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화 [[DOI]](https://doi.org/10.9708/jksci.2026.31.05.011) | KSCI (한국컴퓨터정보학회) | 2026.05 |
+| 대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화 [DOI: 10.9708/jksci.2026.31.05.011](https://doi.org/10.9708/jksci.2026.31.05.011) | KSCI (한국컴퓨터정보학회) | 2026.05 |
 
 <br/>
 
