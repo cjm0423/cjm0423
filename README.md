@@ -64,17 +64,18 @@
 
 <br/>
 
-### 📄 Publication
-
-| Title | Venue | DOI | When |
-| --- | --- | --- | --- |
-| 대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화 | KSCI (한국컴퓨터정보학회) | [DOI: 10.9708/jksci.2026.31.05.011](https://doi.org/10.9708/jksci.2026.31.05.011) | 2026.05 |
-
-<br/>
-
 ### 🏆 Certifications
 
 | Certification | Issuer |
 | --- | --- |
 | 네트워크관리사 2급 | 한국정보통신자격협회(ICQA) |
 | 리눅스마스터 2급 | 한국정보통신진흥협회(KAIT) |
+
+<br/>
+
+### 📄 Publication
+
+| Title | Venue | DOI | When |
+| --- | --- | --- | --- |
+| 대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화 | KSCI (한국컴퓨터정보학회) | [DOI: 10.9708/jksci.2026.31.05.011](https://doi.org/10.9708/jksci.2026.31.05.011) | 2026.05 |
+
