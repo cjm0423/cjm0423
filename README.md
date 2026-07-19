@@ -8,7 +8,7 @@
 - 교내 SW프로젝트 공모전 최우수상 (2025)
 - 관심 분야: Infra / DevOps · Cloud · Kubernetes · OpenStack · 데이터 파이프라인
 - cjm042352@gmail.com
-- https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74
+- [📄 Portfolio](https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74)
 
 ---
 
