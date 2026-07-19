@@ -7,7 +7,7 @@
 - KSCI 학술지 게재 — *대규모 실시간 데이터 파이프라인의 End-to-End 지연시간 최적화* (2026)
 - 교내 SW프로젝트 공모전 최우수상 (2025)
 - 관심 분야: Infra / DevOps · Cloud · Kubernetes · OpenStack · 데이터 파이프라인
-- 📧 cjm042352@gmail.com&nbsp;&nbsp;|&nbsp;&nbsp;[![Notion](https://img.shields.io/badge/Portfolio-Notion-black?style=for-the-badge&logo=notion&logoColor=white)](https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74)
+- 📧 cjm042352@gmail.com&nbsp;&nbsp;|&nbsp;&nbsp;📄 [Portfolio (Notion)](https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74)
 
 ---
 
