@@ -3,6 +3,7 @@
 ### Hi there 👋
 
 <a href="mailto:cjm042352@gmail.com"><img src="https://badgen.net/badge/Mail/cjm042352@gmail.com/red"/></a>
+<a href="https://www.linkedin.com/in/jiman-cha/" target="_blank"><img src="https://badgen.net/badge/LinkedIn/jiman-cha/blue"></a>
 <a href="https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74" target="_blank"><img src="https://badgen.net/badge/Portfolio/Notion/black"></a>
 <a href="./PORTFOLIO.md" target="_blank"><img src="https://badgen.net/badge/Portfolio/GitHub%20(Detailed)/purple"></a>
 
