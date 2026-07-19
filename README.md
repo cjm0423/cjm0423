@@ -52,7 +52,7 @@
 | **CLOUDLAB** | University Cloud/Infra/DevOps Club | Club Leader | Curriculum planning, recruiting, hands-on session design | 2025.07 ~ Present |
 | **CLOUDLAB × Kakao Enterprise** | Cloud Curriculum Collaboration | Contributor | KakaoCloud-based real-time data pipeline course, adopted into KakaoCloud official edu repo (★25) | 2025.01 ~ 2025.08 |
 | **Undergraduate Researcher** | CLOUDLAB Research | Mentor | Junior researcher mentoring, weekly review, Kubeflow/Katib troubleshooting guidance | 2025.07 ~ Present |
-| **전남ICT이노베이션스퀘어** | Cloud Curriculum Development | Course Material Developer | KakaoCloud VM/VPC, NGINX/Apache deployment training material | 2025.10 |
+| **CLOUDLAB × Kakao Enterprise - Kakao Cloud Beginner Track** | Cloud Curriculum Development | Course Material Developer | KakaoCloud VM/VPC, NGINX/Apache deployment training material | 2025.10 |
 
 <br/>
 
