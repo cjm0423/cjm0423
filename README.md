@@ -2,8 +2,6 @@
 
 ### Hi there 👋
 
-<a href="https://graceful-cheddar-9e4.notion.site/..." target="_blank"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"></a>
-<a href="./PORTFOLIO.md" target="_blank"><img src="https://img.shields.io/badge/Detailed%20Portfolio-4B0082?style=for-the-badge&logo=github&logoColor=white"></a>
 <a href="mailto:cjm042352@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=Gmail&logoColor=white&link=mailto:cjm042352@gmail.com"/></a>
 <a href="https://graceful-cheddar-9e4.notion.site/Developer-Portfolio-527d8e51100c832f96e681af1da0903e?pvs=74" target="_blank"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"></a>
 
