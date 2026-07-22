@@ -30,6 +30,41 @@
 - Kubeflow 파이프라인 학습 → KServe 서빙까지 자동화
 - `KakaoCloud` `Kafka` `Spark` `Hadoop` `Kubeflow` `KServe` `Python` `Go`
 
+```mermaid
+flowchart TB
+    TG["Traffic Generator VM"] ==>|LogData| ALB["ALB"]
+    ALB ==> API["API Server VM<br/>Nginx"]
+    API ==> FB["Filebeat"] ==> LS["Logstash"] ==>|LogData| KFK["Kafka"]
+ 
+    API --> DB[("MySQL")]
+    DB -.-> DBZ["Debezium CDC"] -.-> DS["Data Stream VM"] -.DBData.-> KFK
+ 
+    SR["Schema Registry<br/>Avro"] -.직렬화.-> KFK
+ 
+    KFK ==> KC["Kafka Connector VM"] ==> OS[("Object Storage")]
+    OS ==> SPK["Spark Structured Streaming"] ==> DL[("Delta Lake")]
+    DL ==> HIVE["Hive<br/>External → Aggregated → Data Mart"]
+    HIVE --> QRY["Druid · Superset · Tez · Hue"]
+    HIVE ==>|정제 데이터| KFL["Kubeflow"] ==> KS["KServe"]
+ 
+    USER(["사용자"]) --> LB["LB"] --> KFL
+    MON["Monitoring Flow"] -.-> ALERT["Alert Center"]
+ 
+    classDef gen fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
+    classDef collect fill:#eff6ff,stroke:#3b82f6,color:#0c2d6b
+    classDef stream fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    classDef store fill:#ecfdf5,stroke:#10b981,color:#064e3b
+    classDef ml fill:#faf5ff,stroke:#a855f7,color:#3b0764
+    classDef ops fill:#fef2f2,stroke:#ef4444,color:#7f1d1d
+ 
+    class TG,ALB gen
+    class API,FB,LS,DB,DBZ,DS collect
+    class KFK,KC,SR stream
+    class OS,SPK,DL,HIVE,QRY store
+    class KFL,KS,LB,USER ml
+    class MON,ALERT ops
+```
+
 ---
 
 ### 연구
