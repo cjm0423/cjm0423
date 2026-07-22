@@ -267,7 +267,7 @@ flowchart LR
 - `Spring` `Java` `MySQL` `GitHub API`
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph CLIENT["클라이언트"]
         WEB["Web UI<br/>대시보드 · 칸반 보드"]
     end
