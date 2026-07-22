@@ -31,7 +31,7 @@
 - `KakaoCloud` `Kafka` `Spark` `Hadoop` `Kubeflow` `KServe` `Python` `Go`
 
 ```mermaid
-flowchart LR
+flowchart TB
     TG["Traffic Generator VM"] ==>|LogData| ALB["ALB"]
     ALB ==> API["API Server VM<br/>Nginx"]
     API ==> FB["Filebeat"] ==> LS["Logstash"] ==>|LogData| KFK["Kafka"]
