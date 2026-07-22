@@ -104,6 +104,18 @@ flowchart TB
 - 학교 망을 경유하는 트래픽 처리를 위한 네트워크 설계
 - `OpenStack` `Network Design` `On-premise`
 
+```
+[학생] ──▶ 셀프서비스 대시보드
+                │  신청 → 인증
+                ▼
+      [OpenStack Control Plane]
+                │  
+                ├── 운영계 PC
+                └── 개발계 PC
+                          ▲
+                    학교 망 경유 (외부 접근 경로)
+```
+
 ---
 
 ### 3. VMLease — 멀티클라우드 VM 자동화 Kubernetes Operator
