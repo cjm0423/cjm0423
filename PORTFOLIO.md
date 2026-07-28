@@ -315,7 +315,7 @@ flowchart LR
 | 활동 | 기간 | 내용 |
 | :--- | :--- | :--- |
 | **교내동아리 CLOUDLAB 리더** | 2025.07 ~ | 클라우드/인프라/DevOps 커리큘럼 기획 · 2025-1 정규 3기부터 2026-1 정규 4기까지 운영 총괄 · 신입 부원 면접·선발 |
-| **학부연구생 후임 멘토링** | 2025.07 ~ | Essential Course 개선 · 주간 발표 피드백 · Kubeflow Katib CrashLoopBackOff 트러블슈팅 지도 |
+| **학부연구생 후임 멘토링** | 2025.07 ~ | Essential Course 개선 · 주간 발표 피드백 · Kubeflow Katib CrashLoopBackOff 트러블슈팅 지도 · 후임 온보딩 자료 제작을 위한 위키 자동 생성 AI 도구 개발 |
 | **2025 전라남도 Kakaocloud 입문 트랙 교육자료 제작** | 2025.10 | KakaoCloud VM/VPC · 스냅샷/복원 · NGINX/Apache 배포 · 방화벽 및 포트 트러블슈팅에 대한 클라우드 기초 교육 커리큘럼 기획 및 자료 제작 |
 
 ---
